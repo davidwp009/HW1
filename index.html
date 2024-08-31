@@ -6,7 +6,39 @@
     <title>Document</title>
 </head>
 <body>
+    <!--1-->
+    <form>
+        <select id="drinks" onchange="checkOptions()">
+        <option value="tea">tea</option>
+        <option value="tea">coffee</option>
+        <option value="tea">juice</option>
+    </select>
+    </form>
+
+
+<!--2-->
+    <input type="text" id="text-day" placeholder="week's day">
+    <button onclick="checkDay()">send</button>
+
     
+    
+<!--3-->
+    <input type="number" min="1" max="12" id="month" placeholder="month">
+    <button onclick="checkMonth()">send</button>
+<!--4-->
+<input type="number" id="months-days" min="1" max="12">
+<button onclick="checkDaysInMonth()">send</button>
+
+
+<!--5-->
+<input type="text" id="color">
+<button onclick="checkColor()">send</button>
+
+
+
+
+    <script src="./script.js"></script>
 </body>
-<script src="./script.js"></script>
+
 </html>
+
