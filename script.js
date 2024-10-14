@@ -119,88 +119,88 @@
 
 
 //HW-5
-function checkOptions() {
-    const select = document.getElementById('drinks')
-    const selectedValue = select.options[select.selectedIndex].value;
-    if (selectedValue === 'coffee') {
-        alert("ви обрали каву")
-    } else if (selectedValue === 'tea') {
-        alert("ви обрали чай")
-    } else if (selectedValue === 'juice') {
-        alert ("ви обрали сік")
-    }
-}
+//function checkOptions() {
+//    const select = document.getElementById('drinks')
+//    const selectedValue = select.options[select.selectedIndex].value;
+//    if (selectedValue === 'coffee') {
+//        alert("ви обрали каву")
+//    } else if (selectedValue === 'tea') {
+//        alert("ви обрали чай")
+//    } else if (selectedValue === 'juice') {
+//        alert ("ви обрали сік")
+//    }
+//}
 
 //2
-function checkDay() {
-     const fieldDay = document.getElementById("text-day").value;
-     switch (fieldDay) {
-        case "Monday":
-        case "Tuesday":
-        case "Wednesday":
-        case "Thurtday":
-        case "Friday":
-            alert("робочий день") 
-            break;
-        case "saturday":
-        case "sunday":
-            alert ("вихідний день")
-            break;
-        default:
-            alert("неправельно введеня інформація")                       
-     }
-}
+//function checkDay() {
+//     const fieldDay = document.getElementById("text-day").value;
+//     switch (fieldDay) {
+//        case "Monday":
+ //       case "Tuesday":
+//        case "Wednesday":
+//        case "Thurtday":
+//        case "Friday":
+//            alert("робочий день") 
+//            break;
+///        case "saturday":
+//        case "sunday":
+//            alert ("вихідний день")
+//            break;
+//        default:
+//            alert("неправельно введеня інформація")                       
+//     }
+//}
 //3
-function checkMonth() {
-    const fieldMonth = document.getElementById('month').value;
-    if((fieldMonth < 3 && fieldMonth > 0) || fieldMonth === 12) {
-        alert("winter");
-    } else if (fieldMonth > 2 && fieldMonth < 6) {
-        alert("spring");
-    } else if (fieldMonth > 5 && fieldMonth < 9) {
-        alert("summer");
-    } else if (fieldMonth > 8 && fieldMonth < 12) {
-        alert("autom");
-    } else {
-        alert("error")
-    }
-}
+//function checkMonth() {
+//    const fieldMonth = document.getElementById('month').value;
+//    if((fieldMonth < 3 && fieldMonth > 0) || fieldMonth === 12) {
+//        alert("winter");
+//    } else if (fieldMonth > 2 && fieldMonth < 6) {
+//        alert("spring");
+//    } else if (fieldMonth > 5 && fieldMonth < 9) {
+//        alert("summer");
+//    } else if (fieldMonth > 8 && fieldMonth < 12) {
+//        alert("autom");
+//    } else {
+//        alert("error")
+//    }
+//}
 //4
-function checkDaysInMonth() {
-    const fieldMonthDay = document.getElementById('months-days').value;
-    if(fieldMonthDay === 2) {
-        alert ("28 or 29");
-    } else if (
-        fieldMonthDay === 1 ||
-        fieldMonthDay === 3 ||
-        fieldMonthDay === 5 ||
-        fieldMonthDay === 7 ||
-        fieldMonthDay === 8 ||
-        fieldMonthDay === 10 ||
-        fieldMonthDay === 12 
-    ) {
-        alert("31")
-    }  else {
-        alert("30")
-    }
-}
+//function checkDaysInMonth() {
+//    const fieldMonthDay = document.getElementById('months-days').value;
+//    if(fieldMonthDay === 2) {
+//        alert ("28 or 29");
+//    } else if (
+//        fieldMonthDay === 1 ||
+//        fieldMonthDay === 3 ||
+ //       fieldMonthDay === 5 ||
+ //       fieldMonthDay === 7 ||
+//        fieldMonthDay === 8 ||
+//        fieldMonthDay === 10 ||
+//        fieldMonthDay === 12 
+//    ) {
+//        alert("31")
+//    }  else {
+//        alert("30")
+//    }
+//}
 //5
-function checkColor() {
-    const fieldColor = document.getElementById("color").value;
-    switch (fieldColor) {
-        case 'red':
-            alert('stop');
-            break;
-        case 'yellow':
-            alert('weit');
-            break;
-        case 'green':
-            alert('go');
-            break
-        default:
-            alert('введіть колір світлофора')        
-    }
-}
+//function checkColor() {
+//    const fieldColor = document.getElementById("color").value;
+//    switch (fieldColor) {
+//        case 'red':
+//            alert('stop');
+//            break;
+//        case 'yellow':
+//            alert('weit');
+//            break;
+//        case 'green':
+//            alert('go');
+//            break
+//        default:
+//            alert('введіть колір світлофора')        
+//    }
+//}
 
 //HW-6
 //1
@@ -288,13 +288,71 @@ function checkColor() {
 //1
 
 
-const friends = ['Mango', 'Poly', 'Kiwi', 'Ajax'];   
-let string = '';  
+//const friends = ['Mango', 'Poly', 'Kiwi', 'Ajax'];   
+//let string = '';  
 
-for (let i = 0; i < friends.length; i++){
-    string += friends[i];
-    if (i < friends.length - 1) {
-        string += ", "
+//for (let i = 0; i < friends.length; i++){
+//    string += friends[i];
+ //   if (i < friends.length - 1) {
+//        string += ", "
+//    }
+//}
+//console.log(string);
+
+
+//HW-4
+// 1
+function checkFields() {
+    const fieldValueOne = document.getElementById("text-one").value;
+    const fieldValueTwo = document.getElementById("text-two").value;
+    if (fieldValueOne !== "" && fieldValueTwo !== "") {
+        alert("Обидва поля заповнені");
+    } else {
+        alert("Не всі поля заповнені");
     }
 }
-console.log(string);
+
+// 2
+function checkFieldsTwo() {
+    const fieldNumberOne = parseFloat(document.getElementById("number-one").value);
+    const fieldNumberTwo = parseFloat(document.getElementById("number-two").value);
+    if (fieldNumberOne + fieldNumberTwo > 10) {
+        alert("Сума більше 10");
+    } else {
+        alert("Сума менша або дорівнює 10");
+    }
+}
+
+// 3
+function checkFieldsJs() {
+    const fieldValueText = document.getElementById("text-check").value;
+    if (fieldValueText.includes("JavaScript")) {
+        alert("Текст містить слово JavaScript");
+    } else {
+        alert("Текст не містить слово JavaScript");
+    }
+}
+// 4
+function checkNumber() {
+    const fieldValueNumber = document.getElementById("number-four").value;
+    if (fieldValueNumber >= 10 && fieldValueNumber <= 20) {
+        alert("Число входить в діапазон від 10 до 20");
+    } else {
+        alert("Число не входить в діапазон від 10 до 20");
+    }
+}
+
+// 5
+function checkForm() {
+    const name = document.getElementById("inputName").value;
+    const mail = document.getElementById("inputMail").value;
+    const password = document.getElementById("inputPass").value;
+
+    if (name.length > 2 && mail.includes("@") && password.length > 5) {
+        window.location.href = "./test.html";
+        alert("Go to another page");
+    } else {
+        alert("Form is not value");
+    }
+}
+
