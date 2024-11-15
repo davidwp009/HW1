@@ -302,57 +302,140 @@
 
 //HW-4
 // 1
-function checkFields() {
-    const fieldValueOne = document.getElementById("text-one").value;
-    const fieldValueTwo = document.getElementById("text-two").value;
-    if (fieldValueOne !== "" && fieldValueTwo !== "") {
-        alert("Обидва поля заповнені");
-    } else {
-        alert("Не всі поля заповнені");
-    }
-}
+//unction checkFields() {
+//    const fieldValueOne = document.getElementById("text-one").value;
+//    const fieldValueTwo = document.getElementById("text-two").value;
+//    if (fieldValueOne !== "" && fieldValueTwo !== "") {
+//        alert("Обидва поля заповнені");
+//    } else {
+//        alert("Не всі поля заповнені");
+//    }
+//}
 
 // 2
-function checkFieldsTwo() {
-    const fieldNumberOne = parseFloat(document.getElementById("number-one").value);
-    const fieldNumberTwo = parseFloat(document.getElementById("number-two").value);
-    if (fieldNumberOne + fieldNumberTwo > 10) {
-        alert("Сума більше 10");
-    } else {
-        alert("Сума менша або дорівнює 10");
-    }
-}
+//function checkFieldsTwo() {
+//    const fieldNumberOne = parseFloat(document.getElementById("number-one").value);
+//    const fieldNumberTwo = parseFloat(document.getElementById("number-two").value);
+//    if (fieldNumberOne + fieldNumberTwo > 10) {
+//        alert("Сума більше 10");
+//   } else {
+//        alert("Сума менша або дорівнює 10");
+//    }
+//}
 
 // 3
-function checkFieldsJs() {
-    const fieldValueText = document.getElementById("text-check").value;
-    if (fieldValueText.includes("JavaScript")) {
-        alert("Текст містить слово JavaScript");
-    } else {
-        alert("Текст не містить слово JavaScript");
-    }
-}
+//function checkFieldsJs() {
+//    const fieldValueText = document.getElementById("text-check").value;
+//    if (fieldValueText.includes("JavaScript")) {
+//        alert("Текст містить слово JavaScript");
+//    } else {
+//        alert("Текст не містить слово JavaScript");
+//    }
+//}
 // 4
-function checkNumber() {
-    const fieldValueNumber = document.getElementById("number-four").value;
-    if (fieldValueNumber >= 10 && fieldValueNumber <= 20) {
-        alert("Число входить в діапазон від 10 до 20");
-    } else {
-        alert("Число не входить в діапазон від 10 до 20");
-    }
-}
+//function checkNumber() {
+//    const fieldValueNumber = document.getElementById("number-four").value;
+//    if (fieldValueNumber >= 10 && fieldValueNumber <= 20) {
+ //       alert("Число входить в діапазон від 10 до 20");
+//    } else {
+//        alert("Число не входить в діапазон від 10 до 20");
+//    }
+//}
 
 // 5
-function checkForm() {
-    const name = document.getElementById("inputName").value;
-    const mail = document.getElementById("inputMail").value;
-    const password = document.getElementById("inputPass").value;
+//function checkForm() {
+//    const name = document.getElementById("inputName").value;
+//    const mail = document.getElementById("inputMail").value;
+//    const password = document.getElementById("inputPass").value;
+//
+//    if (name.length > 2 && mail.includes("@") && password.length > 5) {
+//        window.location.href = "./test.html";
+//        alert("Go to another page");
+//    } else {
+//        alert("Form is not value");
+//    }
+//}
+//hw10
+// 1
+const bankAccount = {
+    ownerName: 'Іван Петров',
+    accountNumber: 'UA1234567890',
+    balance: 1000,
 
-    if (name.length > 2 && mail.includes("@") && password.length > 5) {
-        window.location.href = "./test.html";
-        alert("Go to another page");
-    } else {
-        alert("Form is not value");
+    deposit: function() {
+        const amount = parseFloat(document.getElementById('deposit').value);
+        if (!isNaN(amount) && amount > 0) {
+            this.balance += amount;
+            document.getElementById('balanceMessage').textContent = `Залишок на рахунку: ${this.balance} грн`;
+        } else {
+            alert("Введіть правильну суму для поповнення.");
+        }
+    },
+
+    withdraw: function() {
+        const amount = parseFloat(document.getElementById('withdraw').value);
+        if (!isNaN(amount) && amount > 0 && amount <= this.balance) {
+            this.balance -= amount;
+            document.getElementById('balanceMessage').textContent = `Залишок на рахунку: ${this.balance} грн`;
+        } else {
+            alert("Введіть правильну суму або перевірте баланс.");
+        }
     }
-}
+};
 
+//  2
+const weather = {
+    temperature: 0,
+    humidity: 50,
+    windSpeed: 10,
+
+    checkTemperature: function() {
+        this.temperature = parseFloat(document.getElementById('temperatureInput').value);
+        if (this.temperature < 0) {
+            document.getElementById('weatherMessage').textContent = 'Температура нижче 0 градусів Цельсія';
+        } else {
+            document.getElementById('weatherMessage').textContent = 'Температура вище або рівна 0 градусів Цельсія';
+        }
+    }
+};
+
+//  3
+const user = {
+    name: '',
+    email: '',
+    password: '',
+
+    login: function() {
+        const emailInput = document.getElementById('loginEmail').value;
+        const passwordInput = document.getElementById('loginPassword').value;
+
+        if (emailInput === this.email && passwordInput === this.password) {
+            document.getElementById('loginMessage').textContent = 'Вітаємо! Ви успішно увійшли.';
+        } else {
+            document.getElementById('loginMessage').textContent = 'Невірний email або пароль.';
+        }
+    }
+};
+
+// 4
+const movie = {
+    title: 'Інтерстеллар',
+    director: 'Крістофер Нолан',
+    year: 2014,
+    rating: 8.6,
+
+    checkRating: function() {
+        this.title = document.getElementById('movieTitle').value;
+        this.director = document.getElementById('movieDirector').value;
+        this.year = parseInt(document.getElementById('movieYear').value);
+        this.rating = parseFloat(document.getElementById('movieRating').value);
+
+        document.getElementById('movieDetails').textContent = `Назва: ${this.title}, Режисер: ${this.director}, Рік: ${this.year}, Рейтинг: ${this.rating}`;
+
+        if (this.rating > 8) {
+            document.getElementById('movieTitle').classList.add('green');
+        } else {
+            document.getElementById('movieTitle').classList.remove('green');
+        }
+    }
+};
