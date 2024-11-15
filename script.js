@@ -443,6 +443,7 @@
 
 //HW-1//1
 
+//  1
 const user = {
     name: 'John Doe',
     age: 30,
@@ -450,6 +451,7 @@ const user = {
     premium: true
 };
 
+const { mood, hobby, premium } = user; 
 user.mood = 'happy';
 user.hobby = 'skydiving';
 user.premium = false;
@@ -460,55 +462,124 @@ for (const key of Object.keys(user)) {
 
 //  2
 function countProps(obj) {
-    return Object.keys(obj).length;
+    const { length } = Object.keys(obj); 
+    return length;
 }
 
-//  3
+// 3
 function findBestEmployee(employees) {
     let bestEmployee = '';
     let maxTasks = 0;
 
-    for (const employee in employees) {
-        if (employees[employee] > maxTasks) {
+    for (const [employee, tasks] of Object.entries(employees)) {
+        if (tasks > maxTasks) {
             bestEmployee = employee;
-            maxTasks = employees[employee];
+            maxTasks = tasks;
         }
     }
 
     return bestEmployee;
 }
 
-//  4
+// 4
 function countTotalSalary(employees) {
     let totalSalary = 0;
 
-    for (const employee in employees) {
-        totalSalary += employees[employee];
+    for (const { salary } of Object.values(employees)) { 
+        totalSalary += salary;
     }
 
     return totalSalary;
 }
 
-// 5
+//  5
 function getAllPropValues(arr, prop) {
     const values = [];
     for (const obj of arr) {
-        if (obj.hasOwnProperty(prop)) {
-            values.push(obj[prop]);
+        const { [prop]: value } = obj; 
+        if (value !== undefined) {
+            values.push(value);
         }
     }
     return values;
 }
 
-// t 6
+//  6
 function calculateTotalPrice(allProducts, productName) {
-    for (const product of allProducts) {
-        if (product.name === productName) {
-            return product.price * product.quantity;
+    for (const { name, price, quantity } of allProducts) { 
+        if (name === productName) {
+            return price * quantity;
         }
     }
     return 0;
 }
+
+//  7 
+const accounts = {
+    ownerName: 'John Doe',
+    accountNumber: '1234567890',
+    balance: 1000,
+    transactionHistory: [],
+
+    deposit(amount) {
+        if (amount > 0) {
+            this.balance += amount;
+            this.transactionHistory.push(`Deposited: $${amount}`);
+        }
+    },
+
+    withdraw(amount) {
+        if (amount > 0 && amount <= this.balance) {
+            this.balance -= amount;
+            this.transactionHistory.push(`Withdrew: $${amount}`);
+        }
+    },
+
+    getBalance() {
+        return this.balance;
+    },
+
+    getTransactionHistory() {
+        return this.transactionHistory;
+    }
+};
+
+const account = {
+    ownerName: 'John Doe',
+    accountNumber: '1234567890',
+    balance: 1000,
+    transactionHistory: [],
+
+    // поповнення 
+    deposit(amount) {
+        if (amount <= 0) {
+            console.log("Сума поповнення повинна бути більшою за нуль.");
+            return;
+        }
+        this.balance += amount;
+        this.transactionHistory.push(`Поповнення: $${amount}`);
+        console.log(`Рахунок поповнено на $${amount}.`);
+    },
+
+    //  зняття коштів 
+    withdraw(amount) {
+        if (amount <= 0) {
+            console.log("Сума для зняття повинна бути більшою за нуль.");
+            return;
+        }
+        if (amount > this.balance) {
+            console.log("Недостатньо коштів на рахунку.");
+            return;
+        }
+        this.balance -= amount;
+        this.transactionHistory.push(`Зняття: $${amount}`);
+        console.log(`З рахунку знято $${amount}.`);
+    },
+};
+
+
+account.deposit(500); 
+
 
 
 
