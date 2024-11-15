@@ -357,85 +357,158 @@
 //}
 //hw10
 // 1
-const bankAccount = {
-    ownerName: 'Іван Петров',
-    accountNumber: 'UA1234567890',
-    balance: 1000,
-
-    deposit: function() {
-        const amount = parseFloat(document.getElementById('deposit').value);
-        if (!isNaN(amount) && amount > 0) {
-            this.balance += amount;
-            document.getElementById('balanceMessage').textContent = `Залишок на рахунку: ${this.balance} грн`;
-        } else {
-            alert("Введіть правильну суму для поповнення.");
-        }
-    },
-
-    withdraw: function() {
-        const amount = parseFloat(document.getElementById('withdraw').value);
-        if (!isNaN(amount) && amount > 0 && amount <= this.balance) {
-            this.balance -= amount;
-            document.getElementById('balanceMessage').textContent = `Залишок на рахунку: ${this.balance} грн`;
-        } else {
-            alert("Введіть правильну суму або перевірте баланс.");
-        }
-    }
+//const bankAccount = {
+//    ownerName: 'Іван Петров',
+//    accountNumber: 'UA1234567890',
+//    balance: 1000,
+//
+//    deposit: function() {
+//        const amount = parseFloat(document.getElementById('deposit').value);
+//        if (!isNaN(amount) && amount > 0) {
+//            this.balance += amount;
+//            document.getElementById('balanceMessage').textContent = `Залишок на рахунку: ${this.balance} грн`;
+//        } else {
+//            alert("Введіть правильну суму для поповнення.");
+//        }
+ //   },
+//
+//    withdraw: function() {
+//        const amount = parseFloat(document.getElementById('withdraw').value);
+//        if (!isNaN(amount) && amount > 0 && amount <= this.balance) {
+//            this.balance -= amount;
+//            document.getElementById('balanceMessage').textContent = `Залишок на рахунку: ${this.balance} грн`;
+//        } else {
+//            alert("Введіть правильну суму або перевірте баланс.");
+ //       }
+ //   }
 };
 
 //  2
-const weather = {
-    temperature: 0,
-    humidity: 50,
-    windSpeed: 10,
+//const weather = {
+//    temperature: 0,
+//    humidity: 50,
+//    windSpeed: 10,
 
-    checkTemperature: function() {
-        this.temperature = parseFloat(document.getElementById('temperatureInput').value);
-        if (this.temperature < 0) {
-            document.getElementById('weatherMessage').textContent = 'Температура нижче 0 градусів Цельсія';
-        } else {
-            document.getElementById('weatherMessage').textContent = 'Температура вище або рівна 0 градусів Цельсія';
-        }
-    }
-};
+//    checkTemperature: function() {
+///        this.temperature = parseFloat(document.getElementById('temperatureInput').value);
+//        if (this.temperature < 0) {
+//            document.getElementById('weatherMessage').textContent = 'Температура нижче 0 градусів Цельсія';
+ //       } else {
+//            document.getElementById('weatherMessage').textContent = 'Температура вище або рівна 0 градусів Цельсія';
+//        }
+//    }
+//};
 
 //  3
-const user = {
-    name: '',
-    email: '',
-    password: '',
+//const user = {
+//    name: '',
+//    email: '',
+//    password: '',
 
-    login: function() {
-        const emailInput = document.getElementById('loginEmail').value;
-        const passwordInput = document.getElementById('loginPassword').value;
-
-        if (emailInput === this.email && passwordInput === this.password) {
-            document.getElementById('loginMessage').textContent = 'Вітаємо! Ви успішно увійшли.';
-        } else {
-            document.getElementById('loginMessage').textContent = 'Невірний email або пароль.';
-        }
-    }
-};
+//    login: function() {
+//        const emailInput = document.getElementById('loginEmail').value;
+//        const passwordInput = document.getElementById('loginPassword').value;
+//
+//        if (emailInput === this.email && passwordInput === this.password) {
+//            document.getElementById('loginMessage').textContent = 'Вітаємо! Ви успішно увійшли.';
+//        } else {
+ //           document.getElementById('loginMessage').textContent = 'Невірний email або пароль.';
+//        }
+//    }
+//};
 
 // 4
-const movie = {
-    title: 'Інтерстеллар',
-    director: 'Крістофер Нолан',
-    year: 2014,
-    rating: 8.6,
+//const movie = {
+//    title: 'Інтерстеллар',
+//    director: 'Крістофер Нолан',
+//    year: 2014,
+//    rating: 8.6,
+//
+//   checkRating: function() {
+ ///       this.title = document.getElementById('movieTitle').value;
+//        this.director = document.getElementById('movieDirector').value;
+ //       this.year = parseInt(document.getElementById('movieYear').value);
+//        this.rating = parseFloat(document.getElementById('movieRating').value);
+//
+//        document.getElementById('movieDetails').textContent = `Назва: ${this.title}, Режисер: ${this.director}, Рік: ${this.year}, Рейтинг: ${this.rating}`;
+//
+ //       if (this.rating > 8) {
+//            document.getElementById('movieTitle').classList.add('green');
+//        } else {
+//            document.getElementById('movieTitle').classList.remove('green');
+//        }
+//    }
+//};
 
-    checkRating: function() {
-        this.title = document.getElementById('movieTitle').value;
-        this.director = document.getElementById('movieDirector').value;
-        this.year = parseInt(document.getElementById('movieYear').value);
-        this.rating = parseFloat(document.getElementById('movieRating').value);
 
-        document.getElementById('movieDetails').textContent = `Назва: ${this.title}, Режисер: ${this.director}, Рік: ${this.year}, Рейтинг: ${this.rating}`;
+//HW-1//1
 
-        if (this.rating > 8) {
-            document.getElementById('movieTitle').classList.add('green');
-        } else {
-            document.getElementById('movieTitle').classList.remove('green');
+const user = {
+    name: 'John Doe',
+    age: 30,
+    hobby: 'reading',
+    premium: true
+};
+
+user.mood = 'happy';
+user.hobby = 'skydiving';
+user.premium = false;
+
+for (const key of Object.keys(user)) {
+    console.log(`${key}: ${user[key]}`);
+}
+
+//  2
+function countProps(obj) {
+    return Object.keys(obj).length;
+}
+
+//  3
+function findBestEmployee(employees) {
+    let bestEmployee = '';
+    let maxTasks = 0;
+
+    for (const employee in employees) {
+        if (employees[employee] > maxTasks) {
+            bestEmployee = employee;
+            maxTasks = employees[employee];
         }
     }
-};
+
+    return bestEmployee;
+}
+
+//  4
+function countTotalSalary(employees) {
+    let totalSalary = 0;
+
+    for (const employee in employees) {
+        totalSalary += employees[employee];
+    }
+
+    return totalSalary;
+}
+
+// 5
+function getAllPropValues(arr, prop) {
+    const values = [];
+    for (const obj of arr) {
+        if (obj.hasOwnProperty(prop)) {
+            values.push(obj[prop]);
+        }
+    }
+    return values;
+}
+
+// t 6
+function calculateTotalPrice(allProducts, productName) {
+    for (const product of allProducts) {
+        if (product.name === productName) {
+            return product.price * product.quantity;
+        }
+    }
+    return 0;
+}
+
+
+
