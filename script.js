@@ -439,74 +439,43 @@
 //        }
 //    }
 //};
-
-//hw-9
-//  1
-function logItems(array) {
-    for (let i = 0; i < array.length; i++) {
-        console.log(`${i + 1} - ${array[i]}`);
-    }
+//hw-14
+//1
+function getUsersNames(users) {
+    return users.map(user => user.name);
+}
+//2
+function getUsersByEyeColor(users, eyeColor) {
+    return users.filter(user => user.eyeColor === eyeColor);
+}
+//3
+function getUsersNamesByGender(users, gender) {
+    return users.filter(user => user.gender === gender).map(user => user.name);
+}
+//4
+function getInactiveUsers(users) {
+    return users.filter(user => !user.isActive);
+}
+//5
+function getUserByEmail(users, email) {
+    return users.find(user => user.email === email);
+}
+//6
+function getUsersByAgeRange(users, min, max) {
+    return users.filter(user => user.age >= min && user.age <= max);
 }
 
-//  2
-function calculateEngravingPrice(message, pricePerWord) {
-    const words = message.split(' ');
-    return words.length * pricePerWord;
-}
+const users = [
+    { name: 'John', email: 'john@example.com', eyeColor: 'blue', gender: 'male', isActive: true, age: 25 },
+    { name: 'Jane', email: 'jane@example.com', eyeColor: 'green', gender: 'female', isActive: false, age: 30 },
+    { name: 'Alice', email: 'alice@example.com', eyeColor: 'blue', gender: 'female', isActive: true, age: 28 },
+    { name: 'Bob', email: 'bob@example.com', eyeColor: 'brown', gender: 'male', isActive: false, age: 22 },
+];
 
-//  3
-function findLongestWord(string) {
-    const words = string.split(' ');
-    let longestWord = '';
-
-    for (const word of words) {
-        if (word.length > longestWord.length) {
-            longestWord = word;
-        }
-    }
-
-    return longestWord;
-}
-
-//  4
-function formatString(string) {
-    if (string.length <= 40) {
-        return string;
-    }
-    return string.slice(0, 40) + '...';
-}
-
-// 5
-function checkForSpam(message) {
-    const lowerCaseMessage = message.toLowerCase();
-    return lowerCaseMessage.includes('spam') || lowerCaseMessage.includes('sale');
-}
-
-//  6
-function sumNumbers() {
-    const numbers = [];
-    let total = 0;
-
-    while (true) {
-        const input = prompt('Введіть число:');
-        
-        if (input === null) {
-            break;
-        }
-
-        const number = Number(input);
-
-        if (!isNaN(number)) {
-            numbers.push(number);
-        } else {
-            alert('Будь ласка, введіть число!');
-        }
-    }
-
-    for (const number of numbers) {
-        total += number;
-    }
-
-    console.log(`Загальна сума чисел дорівнює ${total}`);
-}
+console.log(getUsersNames(users));
+console.log(getUsersByEyeColor(users, 'blue'));
+console.log(getUsersNamesByGender(users, 'male'));
+console.log(getInactiveUsers(users));
+console.log(getUserByEmail(users, 'jane@example.com'));
+console.log(getUsersByAgeRange(users, 23, 30));
 
