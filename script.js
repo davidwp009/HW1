@@ -381,7 +381,7 @@
 //            alert("Введіть правильну суму або перевірте баланс.");
  //       }
  //   }
-};
+//};
 
 //  2
 //const weather = {
@@ -440,146 +440,73 @@
 //    }
 //};
 
-
-//HW-1//1
-
+//hw-9
 //  1
-const user = {
-    name: 'John Doe',
-    age: 30,
-    hobby: 'reading',
-    premium: true
-};
-
-const { mood, hobby, premium } = user; 
-user.mood = 'happy';
-user.hobby = 'skydiving';
-user.premium = false;
-
-for (const key of Object.keys(user)) {
-    console.log(`${key}: ${user[key]}`);
+function logItems(array) {
+    for (let i = 0; i < array.length; i++) {
+        console.log(`${i + 1} - ${array[i]}`);
+    }
 }
 
 //  2
-function countProps(obj) {
-    const { length } = Object.keys(obj); 
-    return length;
+function calculateEngravingPrice(message, pricePerWord) {
+    const words = message.split(' ');
+    return words.length * pricePerWord;
 }
 
-// 3
-function findBestEmployee(employees) {
-    let bestEmployee = '';
-    let maxTasks = 0;
+//  3
+function findLongestWord(string) {
+    const words = string.split(' ');
+    let longestWord = '';
 
-    for (const [employee, tasks] of Object.entries(employees)) {
-        if (tasks > maxTasks) {
-            bestEmployee = employee;
-            maxTasks = tasks;
+    for (const word of words) {
+        if (word.length > longestWord.length) {
+            longestWord = word;
         }
     }
 
-    return bestEmployee;
+    return longestWord;
 }
 
-// 4
-function countTotalSalary(employees) {
-    let totalSalary = 0;
-
-    for (const { salary } of Object.values(employees)) { 
-        totalSalary += salary;
+//  4
+function formatString(string) {
+    if (string.length <= 40) {
+        return string;
     }
-
-    return totalSalary;
+    return string.slice(0, 40) + '...';
 }
 
-//  5
-function getAllPropValues(arr, prop) {
-    const values = [];
-    for (const obj of arr) {
-        const { [prop]: value } = obj; 
-        if (value !== undefined) {
-            values.push(value);
-        }
-    }
-    return values;
+// 5
+function checkForSpam(message) {
+    const lowerCaseMessage = message.toLowerCase();
+    return lowerCaseMessage.includes('spam') || lowerCaseMessage.includes('sale');
 }
 
 //  6
-function calculateTotalPrice(allProducts, productName) {
-    for (const { name, price, quantity } of allProducts) { 
-        if (name === productName) {
-            return price * quantity;
+function sumNumbers() {
+    const numbers = [];
+    let total = 0;
+
+    while (true) {
+        const input = prompt('Введіть число:');
+        
+        if (input === null) {
+            break;
+        }
+
+        const number = Number(input);
+
+        if (!isNaN(number)) {
+            numbers.push(number);
+        } else {
+            alert('Будь ласка, введіть число!');
         }
     }
-    return 0;
+
+    for (const number of numbers) {
+        total += number;
+    }
+
+    console.log(`Загальна сума чисел дорівнює ${total}`);
 }
-
-//  7 
-const accounts = {
-    ownerName: 'John Doe',
-    accountNumber: '1234567890',
-    balance: 1000,
-    transactionHistory: [],
-
-    deposit(amount) {
-        if (amount > 0) {
-            this.balance += amount;
-            this.transactionHistory.push(`Deposited: $${amount}`);
-        }
-    },
-
-    withdraw(amount) {
-        if (amount > 0 && amount <= this.balance) {
-            this.balance -= amount;
-            this.transactionHistory.push(`Withdrew: $${amount}`);
-        }
-    },
-
-    getBalance() {
-        return this.balance;
-    },
-
-    getTransactionHistory() {
-        return this.transactionHistory;
-    }
-};
-
-const account = {
-    ownerName: 'John Doe',
-    accountNumber: '1234567890',
-    balance: 1000,
-    transactionHistory: [],
-
-    // поповнення 
-    deposit(amount) {
-        if (amount <= 0) {
-            console.log("Сума поповнення повинна бути більшою за нуль.");
-            return;
-        }
-        this.balance += amount;
-        this.transactionHistory.push(`Поповнення: $${amount}`);
-        console.log(`Рахунок поповнено на $${amount}.`);
-    },
-
-    //  зняття коштів 
-    withdraw(amount) {
-        if (amount <= 0) {
-            console.log("Сума для зняття повинна бути більшою за нуль.");
-            return;
-        }
-        if (amount > this.balance) {
-            console.log("Недостатньо коштів на рахунку.");
-            return;
-        }
-        this.balance -= amount;
-        this.transactionHistory.push(`Зняття: $${amount}`);
-        console.log(`З рахунку знято $${amount}.`);
-    },
-};
-
-
-account.deposit(500); 
-
-
-
 
